@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Wealth Wave - Sophisticated Financial Solutions
 
@@ -71,3 +72,6 @@ npm run build
 
 This will create optimized files in the `dist` directory that can be deployed to any static hosting service.
 
+=======
+# Wealth-Wave
+>>>>>>> ff18907f5a4093ad9643b861707ca7ea71a8e20c
