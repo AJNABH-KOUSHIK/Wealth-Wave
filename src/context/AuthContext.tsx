@@ -1,108 +1,54 @@
-
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import AuthService, { UserData } from '../services/auth.service';
-import { useToast } from "@/components/ui/use-toast";
+// src/context/AuthContext.tsx (or wherever it is)
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
 interface AuthContextType {
-  user: UserData | null;
-  loading: boolean;
-  error: string | null;
-  login: (username: string, password: string) => Promise<void>;
-  register: (username: string, password: string, firstName: string, lastName: string, email: string) => Promise<void>;
+  isAuthenticated: boolean;
+  user: any;
+  login: (username: string, password: string) => boolean;
   logout: () => void;
-  refreshUserData: () => Promise<void>;
+  register: (data: any) => boolean;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<UserData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const { toast } = useToast();
+export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState<any>(null);
 
+  // Check if already logged in
   useEffect(() => {
-    // Check if user is already logged in
-    const currentUser = AuthService.getCurrentUser();
-    if (currentUser) {
-      setUser(currentUser);
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      setUser(JSON.parse(savedUser));
+      setIsAuthenticated(true);
     }
-    setLoading(false);
   }, []);
 
-  const login = async (username: string, password: string) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const userData = await AuthService.login({ username, password });
-      setUser(userData);
-      toast({
-        title: "Login successful",
-        description: `Welcome back, ${userData.firstName}!`,
-      });
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || 'An error occurred during login';
-      setError(errorMessage);
-      toast({
-        variant: "destructive",
-        title: "Login failed",
-        description: errorMessage,
-      });
-      throw err;
-    } finally {
-      setLoading(false);
-    }
+  const login = (username: string, password: string) => {
+    // Fake login (accept any credentials for now)
+    const fakeUser = { username, name: username };
+    localStorage.setItem('user', JSON.stringify(fakeUser));
+    setUser(fakeUser);
+    setIsAuthenticated(true);
+    return true;
   };
 
-  const register = async (username: string, password: string, firstName: string, lastName: string, email: string) => {
-    try {
-      setLoading(true);
-      setError(null);
-      const userData = await AuthService.register({ username, password, firstName, lastName, email });
-      setUser(userData);
-      toast({
-        title: "Registration successful",
-        description: `Welcome to Wealth Wave, ${userData.firstName}!`,
-      });
-    } catch (err: any) {
-      const errorMessage = err.response?.data?.message || 'An error occurred during registration';
-      setError(errorMessage);
-      toast({
-        variant: "destructive",
-        title: "Registration failed",
-        description: errorMessage,
-      });
-      throw err;
-    } finally {
-      setLoading(false);
-    }
+  const register = (data: any) => {
+    const fakeUser = { username: data.username, name: data.username };
+    localStorage.setItem('user', JSON.stringify(fakeUser));
+    setUser(fakeUser);
+    setIsAuthenticated(true);
+    return true;
   };
 
   const logout = () => {
-    AuthService.logout();
+    localStorage.removeItem('user');
     setUser(null);
-    toast({
-      title: "Logout successful",
-      description: "You have been logged out successfully.",
-    });
-  };
-
-  const refreshUserData = async () => {
-    try {
-      if (AuthService.isLoggedIn()) {
-        const userData = await AuthService.getUserProfile();
-        setUser({
-          ...user,
-          ...userData
-        } as UserData);
-      }
-    } catch (err) {
-      console.error('Error refreshing user data:', err);
-    }
+    setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, error, login, register, logout, refreshUserData }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, register }}>
       {children}
     </AuthContext.Provider>
   );
@@ -110,8 +56,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error('useAuth must be used within an AuthProvider');
-  }
+  if (!context) throw new Error('useAuth must be used within AuthProvider');
   return context;
 };

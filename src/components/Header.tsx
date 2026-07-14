@@ -58,12 +58,16 @@ const Header = () => {
         <div className="container flex justify-between items-center">
           <div className="flex items-center">
             <Link to="/" className="mr-4">
-              <img 
-                src="/lovable-uploads/wealth-wave-logo.png" 
-                alt="Wealth Wave" 
-                className="h-14"
-              />
-            </Link>
+  <img 
+    src="/wealth-wave-logo.png" 
+  alt="Wealth Wave" 
+  className="h-14 w-auto" 
+    onError={(e) => {
+      console.log("Logo failed to load");
+      e.currentTarget.style.display = "none";
+    }}
+  />
+</Link>
           </div>
           <div className="hidden md:flex items-center space-x-2 flex-1 max-w-md ml-auto">
             <div className="relative flex-1">
