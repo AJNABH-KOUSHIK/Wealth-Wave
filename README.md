@@ -185,8 +185,6 @@ Banking   Banking      Banking        Banking         Finance
 
 ---
 
-# 📸 Screenshots
-
 ## 🏠 Home Page
 
 > Elegant landing page with premium financial theme.
