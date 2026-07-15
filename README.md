@@ -202,37 +202,6 @@ Banking   Banking      Banking        Banking         Finance
 ```md
 ![Services](./assets/services.png)
 ```
-
----
-
-## 📈 Dashboard
-
-> Interactive charts and financial statistics.
-
-```md
-![Dashboard](./assets/dashboard.png)
-```
-
----
-
-## 💳 Banking Cards
-
-> Premium banking card section.
-
-```md
-![Cards](./assets/cards.png)
-```
-
----
-
-## 📞 Contact
-
-> Customer support and assistance.
-
-```md
-![Contact](./assets/contact.png)
-```
-
 ---
 
 # 🧩 Major Sections
