@@ -6,7 +6,7 @@
 
 > A modern, responsive financial services platform that brings together **Personal Banking, Corporate Banking, Public Banking, Investment Banking, International Banking, and Quantitative Finance** into one elegant web experience with a premium UI.
 
-[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-Wealth_Wave-blueviolet?style=for-the-badge)](https://theme-finance.vercel.app/)
+[![Live Demo](https://wealth-wave-xi.vercel.app/)
 [![Built With](https://img.shields.io/badge/Built_With-React_+_TypeScript-orange?style=for-the-badge&logo=react)](https://theme-finance.vercel.app/)
 [![Status](https://img.shields.io/badge/Status-Live_&_Active-brightgreen?style=for-the-badge)]()
 [![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)]()
@@ -63,11 +63,7 @@ The project focuses on:
 
 # 🌐 Project Resources
 
-👉 **[🚀 Live Website](https://theme-finance.vercel.app/)**
-
-👉 **📑 Project Presentation (Coming Soon)**
-
-👉 **📄 Project Report (Coming Soon)**
+👉 **[🚀 Live Website](https://wealth-wave-xi.vercel.app/)**
 
 ---
 
