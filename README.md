@@ -185,16 +185,6 @@ Banking   Banking      Banking        Banking         Finance
 
 ---
 
-## 🏠 Home Page
-
-> Elegant landing page with premium financial theme.
-
-```md
-![Home](./assets/home.png)
-```
-
----
-
 ## 🏦 Banking Services
 
 > Explore all financial services from one place.
