@@ -341,8 +341,3 @@ If you found this project useful,
 
 📢 Share it with others
 
----
-
-## 📜 License
-
-This project is licensed under the **MIT License**.
