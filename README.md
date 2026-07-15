@@ -185,15 +185,6 @@ Banking   Banking      Banking        Banking         Finance
 
 ---
 
-## 🏦 Banking Services
-
-> Explore all financial services from one place.
-
-```md
-![Services](./assets/services.png)
-```
----
-
 # 🧩 Major Sections
 
 | Section | Description |
